@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Expense from "./components/Expenses/Expense";
 import NewExpense from "./components/NewExpense/NewExpense";
 
-const API_URL = fetch(`${process.env.REACT_APP_API_URL}/api/expenses`);
+const API_URL = `${process.env.REACT_APP_API_URL}/api/expenses`;
 
 function App() {
   const [expenses, setExpenses] = useState([]);
@@ -32,9 +32,7 @@ function App() {
       setExpenses(loadedExpenses);
     } catch (err) {
       console.error("Fetch error:", err);
-      setError(
-        "Could not connect to backend. Please ensure the server is running on port 5000.",
-      );
+      setError("Could not connect to server. Please try again later.");
     }
     setIsLoading(false);
   }, []);
